@@ -8,19 +8,15 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer className="bg-gray-950 text-white">
-      {/* Top accent */}
       <div className="h-[3px] bg-primary" />
 
-      {/* Grid texture */}
       <div className="absolute pointer-events-none opacity-[0.02]"
         style={{ backgroundImage: 'repeating-linear-gradient(90deg,white 0,white 1px,transparent 0,transparent 50%)', backgroundSize: '80px 100%', inset: 0 }} />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 pt-20 pb-10">
 
-        {/* Main grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-16">
 
-          {/* ── Brand ── */}
           <div className="space-y-6">
             <Link href="/">
               <div className="relative w-32 h-18 mb-3">
@@ -46,7 +42,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* ── Quick Links ── */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-6 flex items-center gap-2">
               <span className="w-3 h-px bg-gray-600 inline-block" /> Navigation
@@ -71,7 +66,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Services ── */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-6 flex items-center gap-2">
               <span className="w-3 h-px bg-gray-600 inline-block" /> Services
@@ -97,7 +91,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* ── Contact ── */}
           <div>
             <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-500 mb-6 flex items-center gap-2">
               <span className="w-3 h-px bg-gray-600 inline-block" /> Contact

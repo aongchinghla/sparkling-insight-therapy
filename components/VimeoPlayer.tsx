@@ -19,30 +19,24 @@ export default function VimeoPlayer({ videoUrl, checkoutUrl }: VimeoPlayerProps)
   useEffect(() => {
     if (!iframeRef.current) return;
 
-    // Initialize Vimeo Player by attaching to the existing iframe
     const player = new Player(iframeRef.current);
     playerRef.current = player;
 
-    // Use 'loaded' which is more reliable for already-rendered iframes
     player.on('loaded', () => {
       setIsReady(true);
     });
 
-    // Fallback: If 'loaded' doesn't fire within 3 seconds, show the player anyway
-    // (Sometimes Vimeo events are missed if the iframe loads very quickly)
     const timeout = setTimeout(() => {
       setIsReady(true);
     }, 4000);
 
     player.on('timeupdate', (data: any) => {
-      // 20 second limit
       if (data.seconds >= 20) {
-        player.pause().catch(() => { }); // Catch potential errors if player is already paused
+        player.pause().catch(() => { });
         setIsLimitReached(true);
       }
     });
 
-    // Prevent resume if limit reached
     player.on('play', () => {
       if (isLimitReached) {
         player.pause().catch(() => { });
@@ -74,9 +68,7 @@ export default function VimeoPlayer({ videoUrl, checkoutUrl }: VimeoPlayerProps)
 
       {isLimitReached && (
         <div className="absolute inset-0 z-20 bg-gray-950/80 backdrop-blur-xl flex items-center justify-center p-2 text-center animate-in fade-in zoom-in-95 duration-500">
-          {/* Glass Card */}
           <div className="relative p-4 sm:p-6 rounded-2xl bg-white/5 border border-white/10 shadow-2xl overflow-hidden max-w-[260px] w-full mx-auto">
-            {/* Minimal Background Glow */}
             <div className="absolute -top-12 -left-12 w-24 h-24 bg-primary/20 blur-[50px] pointer-events-none" />
 
             <div className="relative z-10 flex flex-col items-center">

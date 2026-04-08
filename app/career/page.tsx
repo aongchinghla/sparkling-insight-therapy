@@ -10,7 +10,6 @@ import {
 } from 'lucide-react';
 import Image from 'next/image';
 
-// ─── Types ────────────────────────────────────────────────────────────────────
 interface FormFieldProps {
   icon: ReactNode;
   label: string;
@@ -35,14 +34,12 @@ interface ApplicationFormData {
   position: string; experience: string; coverLetter: string; cv: File | null;
 }
 
-// ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
 };
 const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.08 } } };
 
-// ─── Form Field ───────────────────────────────────────────────────────────────
 function FormField({ icon, label, name, value, onChange, placeholder, type = 'text', required }: FormFieldProps) {
   return (
     <div className="space-y-1.5">
@@ -58,7 +55,6 @@ function FormField({ icon, label, name, value, onChange, placeholder, type = 'te
   );
 }
 
-// ─── Application Modal ────────────────────────────────────────────────────────
 function ApplicationModal({ isOpen, onClose, job }: { isOpen: boolean; onClose: () => void; job: JobData | null }) {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
@@ -136,7 +132,6 @@ function ApplicationModal({ isOpen, onClose, job }: { isOpen: boolean; onClose: 
                 <div className="absolute inset-0 opacity-[0.03]"
                   style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,.8) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.8) 1px,transparent 1px)', backgroundSize: '32px 32px' }} />
 
-                {/* ✅ Fixed: transition-all → transition-colors duration-150, z-10 → z-20, bg opacity bumped */}
                 <button
                   onClick={handleClose}
                   className="absolute top-5 right-5 p-2 rounded-lg text-white/40 hover:text-white hover:bg-white/15 active:bg-white/20 transition-colors duration-150 z-20"
@@ -345,7 +340,6 @@ function ApplicationModal({ isOpen, onClose, job }: { isOpen: boolean; onClose: 
   );
 }
 
-// ─── Section wrapper ──────────────────────────────────────────────────────────
 function AnimatedSection({ children, className = '' }: { children: ReactNode; className?: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
@@ -356,7 +350,6 @@ function AnimatedSection({ children, className = '' }: { children: ReactNode; cl
   );
 }
 
-// ─── Why Work With Us data ────────────────────────────────────────────────────
 const whyWorkItems = [
   {
     icon: TrendingUp,
@@ -390,7 +383,6 @@ const whyWorkItems = [
   },
 ];
 
-// ─── Main Career Page ─────────────────────────────────────────────────────────
 export default function CareerPage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<JobData | null>(null);
@@ -484,7 +476,6 @@ export default function CareerPage() {
           </div>
         </section>
 
-        {/* ── Why Work With Us ─────────────────────────────────────────────── */}
         <section className="border-y border-gray-100 bg-gray-950 py-20">
           <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
             <AnimatedSection className="mb-14">
@@ -520,7 +511,6 @@ export default function CareerPage() {
           </div>
         </section>
 
-        {/* ── Open Positions ───────────────────────────────────────────────── */}
         <section id="positions" className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
           <AnimatedSection>
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-14">

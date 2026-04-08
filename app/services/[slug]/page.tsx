@@ -25,7 +25,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
   return (
     <div className="min-h-screen bg-white">
 
-      {/* ── Hero banner ───────────────────────────────────────────────────── */}
       <div className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]"
           style={{ backgroundImage: 'repeating-linear-gradient(90deg,white 0,white 1px,transparent 0,transparent 50%)', backgroundSize: '80px 100%' }} />
@@ -60,7 +59,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </div>
       </div>
 
-      {/* ── Body ──────────────────────────────────────────────────────────── */}
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-20">
 
         <Link
@@ -73,7 +71,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 items-start">
 
-          {/* ── Main content ─────────────────────────────────────────────── */}
           <div className="space-y-20">
 
             {/* Overview */}
@@ -183,7 +180,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
         </div>
 
-        {/* Bottom CTA — aligned to main content column width */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 mt-8">
           <BottomCTA serviceName={service.name} />
         </div>

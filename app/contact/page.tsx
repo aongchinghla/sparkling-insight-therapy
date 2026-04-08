@@ -8,7 +8,6 @@ import {
   Clock, ArrowRight, MessageSquare,
 } from 'lucide-react';
 
-// ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
@@ -31,7 +30,6 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-// ─── Field ────────────────────────────────────────────────────────────────────
 function Field({
   label, name, value, onChange, placeholder, type = 'text', required, icon,
 }: {
@@ -54,7 +52,6 @@ function Field({
   );
 }
 
-// ─── Contact info card ────────────────────────────────────────────────────────
 function InfoCard({ icon: Icon, label, value, sub, href }: {
   icon: React.ElementType; label: string; value: string; sub?: string; href?: string;
 }) {
@@ -84,7 +81,6 @@ function InfoCard({ icon: Icon, label, value, sub, href }: {
   ) : <>{inner}</>;
 }
 
-// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function ContactPage() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
@@ -110,7 +106,6 @@ export default function ContactPage() {
   return (
     <div className="pt-24 pb-24 bg-white min-h-screen">
 
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-6 lg:px-12 pt-8 pb-12">
         <div className="max-w-2xl">
           <motion.p
@@ -138,15 +133,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ── Main split layout ─────────────────────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-16 lg:gap-20 items-start">
 
-          {/* ── Left: Sticky sidebar ──────────────────────────────────────── */}
           <aside className="order-2 lg:order-1 lg:sticky lg:top-28 lg:self-start space-y-6">
             <AnimatedSection className="space-y-6">
 
-              {/* Contact details */}
               <motion.div variants={fadeUp}>
                 <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400 mb-4 flex items-center gap-2">
                   <span className="w-4 h-px bg-gray-300 inline-block" /> Contact Details
@@ -159,7 +151,6 @@ export default function ContactPage() {
                 </div>
               </motion.div>
 
-              {/* Divider */}
               <motion.div variants={fadeUp} className="h-px bg-gray-100" />
 
               {/* Google Maps */}

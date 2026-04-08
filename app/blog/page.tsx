@@ -8,13 +8,11 @@ import Image from 'next/image';
 import { articles } from '@/data/blog-data';
 import type { Article } from '@/data/blog-data';
 
-// ─── Constants ────────────────────────────────────────────────────────────────
 const categories = [
   'All', 'Speech Therapy', 'Occupational Therapy',
   'ABA Therapy', 'Physiotherapy', 'Parent Guide', 'Education',
 ];
 
-// ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
@@ -27,7 +25,6 @@ const stagger: Variants = {
   show: { transition: { staggerChildren: 0.08 } },
 };
 
-// ─── Animated section wrapper ─────────────────────────────────────────────────
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
@@ -44,7 +41,6 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-// ─── Article Card ─────────────────────────────────────────────────────────────
 function ArticleCard({ article }: { article: Article }) {
   return (
     <motion.a
@@ -52,7 +48,6 @@ function ArticleCard({ article }: { article: Article }) {
       href={`/blog/${article.slug}`}
       className="group flex flex-col bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-primary/25 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
     >
-      {/* Thumbnail */}
       <div className="relative aspect-[4/3] overflow-hidden flex-shrink-0">
         <Image
           src={article.thumbnail}
@@ -211,8 +206,8 @@ export default function BlogPage() {
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`text-[11px] font-bold uppercase tracking-[0.14em] px-4 py-2 rounded-xl border transition-all duration-200 ${activeCategory === cat
-                      ? 'bg-primary text-white border-primary'
-                      : 'bg-gray-50 text-gray-500 border-gray-200 hover:border-primary/30 hover:text-gray-700'
+                    ? 'bg-primary text-white border-primary'
+                    : 'bg-gray-50 text-gray-500 border-gray-200 hover:border-primary/30 hover:text-gray-700'
                     }`}
                 >
                   {cat}

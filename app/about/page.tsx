@@ -6,7 +6,6 @@ import type { Variants } from 'motion/react';
 import { Target, Heart, Users, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
 import Image from 'next/image';
 
-// ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 28 },
   show: {
@@ -19,7 +18,6 @@ const stagger: Variants = {
   show: { transition: { staggerChildren: 0.1 } },
 };
 
-// ─── Animated section wrapper ─────────────────────────────────────────────────
 function AnimatedSection({ children, className = '' }: { children: React.ReactNode; className?: string }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-72px' });
@@ -30,7 +28,6 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-// ─── Parallax image wrapper ───────────────────────────────────────────────────
 function ParallaxImage({ src, alt, imgClassName = "object-cover" }: { src: string; alt: string; imgClassName?: string }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
@@ -44,7 +41,6 @@ function ParallaxImage({ src, alt, imgClassName = "object-cover" }: { src: strin
   );
 }
 
-// ─── Stat card ────────────────────────────────────────────────────────────────
 function StatCard({ value, label, index }: { value: string; label: string; index: number }) {
   const textRef = useRef<HTMLParagraphElement>(null);
   const inView = useInView(textRef, { once: true });
@@ -89,7 +85,6 @@ function StatCard({ value, label, index }: { value: string; label: string; index
   );
 }
 
-// ─── Value card ───────────────────────────────────────────────────────────────
 function ValueCard({ icon: Icon, title, description }: {
   icon: React.ElementType; title: string; description: string; index: number;
 }) {
@@ -110,8 +105,6 @@ function ValueCard({ icon: Icon, title, description }: {
   );
 }
 
-
-// ─── Main Page ────────────────────────────────────────────────────────────────
 export default function AboutPage() {
   const heroRef = useRef(null);
   const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -134,7 +127,6 @@ export default function AboutPage() {
   return (
     <div className="bg-white overflow-hidden pt-[91px]">
 
-      {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section ref={heroRef} className="relative h-[65vh] min-h-[500px] flex items-end overflow-hidden">
         <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110">
           <Image
@@ -183,7 +175,6 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      {/* ── Stats strip ──────────────────────────────────────────────────── */}
       <section className="bg-gray-950 border-b border-white/5">
         <AnimatedSection className="max-w-[1440px] mx-auto px-6 lg:px-12 py-14 grid grid-cols-2 md:grid-cols-4 gap-10">
           {stats.map((s, i) => (
@@ -192,7 +183,6 @@ export default function AboutPage() {
         </AnimatedSection>
       </section>
 
-      {/* ── Our Story ────────────────────────────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -260,7 +250,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── How We Work ──────────────────────────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <AnimatedSection>
           <motion.div variants={fadeUp} className="mb-16">
@@ -274,10 +263,8 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-0 relative">
 
-            {/* Animated connecting line — background (gray) */}
             <div className="hidden md:block absolute top-[40px] left-[calc(10%+32px)] right-[calc(10%+32px)] h-[2px] bg-gray-100 z-0" />
 
-            {/* Animated connecting line — foreground (primary) */}
             <motion.div
               className="hidden md:block absolute top-[40px] left-[calc(10%+32px)] h-[2px] bg-primary z-0 origin-left"
               initial={{ scaleX: 0 }}
@@ -299,7 +286,6 @@ export default function AboutPage() {
                 variants={fadeUp}
                 className="relative flex flex-col items-center text-center px-4 md:px-3 py-8"
               >
-                {/* Step circle */}
                 <motion.div
                   initial={{ scale: 0.6, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -307,7 +293,6 @@ export default function AboutPage() {
                   transition={{ delay: 0.2 + i * 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                   className="relative z-10 w-16 h-16 rounded-full bg-white border-2 border-primary/20 hover:border-primary flex flex-col items-center justify-center mb-6 shadow-md hover:shadow-primary/20 hover:shadow-xl transition-all duration-300 group"
                 >
-                  {/* Pulse ring */}
                   <motion.div
                     className="absolute inset-0 rounded-full border-2 border-primary/30"
                     animate={{ scale: [1, 1.18, 1], opacity: [0.5, 0, 0.5] }}
@@ -324,13 +309,11 @@ export default function AboutPage() {
         </AnimatedSection>
       </section>
 
-      {/* ── What Makes Us Unique ──────────────────────────────────────────── */}
       <section className="bg-gray-950 py-16 lg:py-20">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
 
-              {/* Left — What Makes Us Unique */}
               <div>
                 <motion.div variants={fadeUp} className="mb-10">
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-4 flex items-center gap-3">
@@ -365,7 +348,6 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Right — Why Choose Us */}
               <div>
                 <motion.div variants={fadeUp} className="mb-10">
                   <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-primary mb-4 flex items-center gap-3">
@@ -414,7 +396,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Values ───────────────────────────────────────────────────────── */}
       <section className="bg-gray-50/70 border-y border-gray-100 py-16 lg:py-20">
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <AnimatedSection>
@@ -435,7 +416,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── CTA ──────────────────────────────────────────────────────────── */}
       <section className="max-w-[1440px] mx-auto px-6 lg:px-12 py-16 lg:py-20">
         <AnimatedSection>
           <motion.div

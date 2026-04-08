@@ -7,7 +7,6 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import Team from '@/components/home/Team';
 
-// ─── Animation variants ───────────────────────────────────────────────────────
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
@@ -30,7 +29,6 @@ function AnimatedSection({ children, className = '' }: { children: React.ReactNo
   );
 }
 
-// ─── Leadership data ──────────────────────────────────────────────────────────
 const leaders = [
   {
     name: 'Mainul Hossain',
@@ -65,7 +63,6 @@ function LeadershipSlider() {
   const prev = () => go(active === 0 ? leaders.length - 1 : active - 1);
   const next = () => go(active === leaders.length - 1 ? 0 : active + 1);
 
-  // Auto-slide every 5 seconds, pause on hover
   const isPaused = useRef(false);
   React.useEffect(() => {
     const interval = setInterval(() => {
@@ -229,7 +226,7 @@ export default function TeamPage() {
   return (
     <div className="bg-white overflow-hidden pt-[91px]">
 
-      {/* ── Hero — full-bleed dark ────────────────────────────────────────── */}
+      {/* ── Hero —  ────────────────────────────────────────── */}
       <section ref={heroRef} className="relative h-[65vh] min-h-[500px] flex items-end overflow-hidden">
         {/* Parallax bg */}
         <motion.div style={{ y: heroY }} className="absolute inset-0 scale-110">

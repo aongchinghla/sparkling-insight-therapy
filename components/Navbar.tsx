@@ -40,25 +40,21 @@ export default function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  // text color based on menu state
   const linkCls = 'text-gray-700 hover:text-primary';
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-4">
-      {/* Primary top bar — always visible */}
       <div className="absolute top-0 left-0 right-0 h-[3px] bg-primary" />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
 
-          {/* Logo */}
           <Link href="/" className="flex-shrink-0">
             <div className="relative w-42 h-14">
               <Image src="/logo.png" alt="Sparkling Insight" fill className="object-contain object-left" />
             </div>
           </Link>
 
-          {/* Desktop nav */}
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <div key={link.name} className="relative group">
