@@ -30,9 +30,6 @@ export const metadata: Metadata = {
   verification: {
     google: 'JNM4Ji79XDOoitPGYZCaMiEhtNFmZAuYWDA5DQ0pMU8',
   },
-  alternates: {
-    canonical: '/',
-  },
   openGraph: {
     title: 'Sparkling Insight Therapy Point | Child Development Center in Dhaka',
     description:
