@@ -53,7 +53,7 @@ const VIDEOS_DATA = [
     description: 'This therapy-based session helps you reset your mental state, clear the fog, and enter a state of deep flow.',
     price: 399,
     duration: '18 min',
-    vimeoVideoUrl: 'https://player.vimeo.com/video/1177194789?badge=0&autopause=0&player_id=0&app_id=58479',
+    vimeoVideoUrl: '',
   },
 ];
 
