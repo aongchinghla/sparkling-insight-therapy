@@ -20,44 +20,44 @@ const generateDates = () =>
     const date = new Date();
     date.setDate(date.getDate() + i);
     return {
-      day:   date.toLocaleDateString('en-US', { weekday: 'short' }),
-      date:  date.getDate(),
+      day: date.toLocaleDateString('en-US', { weekday: 'short' }),
+      date: date.getDate(),
       month: date.toLocaleDateString('en-US', { month: 'short' }),
-      full:  date,
+      full: date,
     };
   });
 
-const allDates  = generateDates();
+const allDates = generateDates();
 const PAGE_SIZE = 7;
 
-type FormData   = { parentName: string; email: string; contactNumber: string };
+type FormData = { parentName: string; email: string; contactNumber: string };
 type FormErrors = Partial<Record<keyof FormData, string>>;
 
 const validateEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
 const validatePhone = (p: string) => /^[+\d\s\-()]{7,}$/.test(p);
 
-const inputBase   = 'w-full px-4 py-3.5 rounded-xl text-sm font-medium outline-none transition-all duration-200 border-b-2 bg-transparent placeholder:text-gray-300';
+const inputBase = 'w-full px-4 py-3.5 rounded-xl text-sm font-medium outline-none transition-all duration-200 border-b-2 bg-transparent placeholder:text-gray-300';
 const inputNormal = 'border-gray-200 focus:border-primary';
-const inputError  = 'border-red-400 focus:border-red-400';
+const inputError = 'border-red-400 focus:border-red-400';
 
 export default function AppointmentModal({ isOpen, onClose }: AppointmentModalProps) {
-  const [step, setStep]               = useState(1);
+  const [step, setStep] = useState(1);
   const [datePageStart, setDatePageStart] = useState(0);
-  const [selectedDate, setSelectedDate]   = useState<number>(0);
-  const [selectedTime, setSelectedTime]   = useState<string | null>(null);
-  const [formData, setFormData]           = useState<FormData>({ parentName: '', email: '', contactNumber: '' });
-  const [errors, setErrors]               = useState<FormErrors>({});
-  const [touched, setTouched]             = useState<Partial<Record<keyof FormData, boolean>>>({});
+  const [selectedDate, setSelectedDate] = useState<number>(0);
+  const [selectedTime, setSelectedTime] = useState<string | null>(null);
+  const [formData, setFormData] = useState<FormData>({ parentName: '', email: '', contactNumber: '' });
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Partial<Record<keyof FormData, boolean>>>({});
 
   useEffect(() => {
     if (isOpen) document.body.style.overflow = 'hidden';
-    else        document.body.style.overflow = '';
+    else document.body.style.overflow = '';
     return () => { document.body.style.overflow = ''; };
   }, [isOpen]);
 
   const visibleDates = allDates.slice(datePageStart, datePageStart + PAGE_SIZE);
-  const canGoPrev    = datePageStart > 0;
-  const canGoNext    = datePageStart + PAGE_SIZE < allDates.length;
+  const canGoPrev = datePageStart > 0;
+  const canGoNext = datePageStart + PAGE_SIZE < allDates.length;
 
   const handlePrevPage = () => {
     if (!canGoPrev) return;
@@ -124,7 +124,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
   const stepVariants = {
     initial: { opacity: 0, x: 30 },
     animate: { opacity: 1, x: 0 },
-    exit:    { opacity: 0, x: -30 },
+    exit: { opacity: 0, x: -30 },
   };
 
   return (
@@ -184,8 +184,8 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
 
                 <div className="space-y-5">
                   <InfoRow icon={MapPin} label="Our Location" value="House No: 395, New Eskaton Road, Dhaka 1000" />
-                  <InfoRow icon={Clock}  label="Opening Hours" value="Sat – Fri: 9:00 AM – 6:00 PM" />
-                  <InfoRow icon={Phone}  label="Contact Us"    value="+880 1902-028787" />
+                  <InfoRow icon={Clock} label="Opening Hours" value="Sat – Fri: 10:00 AM – 7:00 PM" />
+                  <InfoRow icon={Phone} label="Contact Us" value="+880 1902-028787" />
                 </div>
               </div>
 
@@ -238,16 +238,15 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
 
                         <div className="grid grid-cols-7 gap-2">
                           {visibleDates.map((d, i) => {
-                            const globalIdx  = datePageStart + i;
+                            const globalIdx = datePageStart + i;
                             const isSelected = selectedDate === globalIdx;
                             return (
                               <motion.button key={globalIdx} whileTap={{ scale: 0.94 }}
                                 onClick={() => setSelectedDate(globalIdx)}
-                                className={`rounded-xl py-2 sm:py-3 flex flex-col items-center justify-center transition-all duration-200 border-2 ${
-                                  isSelected
+                                className={`rounded-xl py-2 sm:py-3 flex flex-col items-center justify-center transition-all duration-200 border-2 ${isSelected
                                     ? 'bg-primary border-primary text-white'
                                     : 'bg-white border-gray-200 text-gray-500 hover:border-primary/30 hover:bg-gray-50'
-                                }`}
+                                  }`}
                               >
                                 <span className="text-[8px] sm:text-[9px] font-bold uppercase tracking-widest opacity-60 mb-0.5">{d.day}</span>
                                 <span className="text-sm sm:text-lg font-bold leading-none mb-0.5">{d.date}</span>
@@ -270,11 +269,10 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                           {timeSlots.map((time) => (
                             <motion.button key={time} whileTap={{ scale: 0.95 }}
                               onClick={() => setSelectedTime(time)}
-                              className={`py-3 rounded-xl text-sm font-semibold border-2 transition-all duration-200 ${
-                                selectedTime === time
+                              className={`py-3 rounded-xl text-sm font-semibold border-2 transition-all duration-200 ${selectedTime === time
                                   ? 'bg-primary border-primary text-white'
                                   : 'bg-white border-gray-200 text-gray-600 hover:border-primary/30 hover:bg-gray-50'
-                              }`}
+                                }`}
                             >
                               {time}
                             </motion.button>
@@ -373,9 +371,9 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                       </p>
 
                       <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 w-full text-left space-y-3">
-                        <ConfirmRow icon={Calendar} label="Appointment"        value={`${selectedDateObj.day}, ${selectedDateObj.date} ${selectedDateObj.month} at ${selectedTime}`} />
-                        <ConfirmRow icon={Mail}     label="Confirmation Email" value={formData.email}           sub="We've sent a confirmation to this address." />
-                        <ConfirmRow icon={Phone}    label="SMS Confirmation"   value={formData.contactNumber}  sub="A text message has been sent." />
+                        <ConfirmRow icon={Calendar} label="Appointment" value={`${selectedDateObj.day}, ${selectedDateObj.date} ${selectedDateObj.month} at ${selectedTime}`} />
+                        <ConfirmRow icon={Mail} label="Confirmation Email" value={formData.email} sub="We've sent a confirmation to this address." />
+                        <ConfirmRow icon={Phone} label="SMS Confirmation" value={formData.contactNumber} sub="A text message has been sent." />
                       </div>
                     </motion.div>
                   )}
@@ -388,11 +386,10 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
                   whileTap={{ scale: 0.97 }}
                   onClick={handleNext}
                   disabled={step === 1 ? !selectedTime : step === 2 ? !isStep2Valid : false}
-                  className={`w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 ${
-                    step === 3 || (step === 1 ? selectedTime : isStep2Valid)
+                  className={`w-full py-3.5 rounded-xl font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 ${step === 3 || (step === 1 ? selectedTime : isStep2Valid)
                       ? 'bg-gray-950 hover:bg-primary text-white'
                       : 'bg-gray-100 text-gray-300 cursor-not-allowed'
-                  }`}
+                    }`}
                 >
                   {step === 1 ? 'Continue' : step === 2 ? 'Confirm Booking' : 'Close'}
                   {step !== 3 && <ChevronRight size={16} />}

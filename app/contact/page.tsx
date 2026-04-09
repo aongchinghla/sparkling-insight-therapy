@@ -144,10 +144,10 @@ export default function ContactPage() {
                   <span className="w-4 h-px bg-gray-300 inline-block" /> Contact Details
                 </p>
                 <div className="space-y-2">
-                  <InfoCard icon={Phone} label="Phone" value="+880 1902-028787" sub="Sat – Fri, 9 AM – 6 PM" href="tel:+8801902028787" />
+                  <InfoCard icon={Phone} label="Phone" value="+880 1902-028787" sub="Sat – Fri, 10 AM – 7 PM" href="tel:+8801902028787" />
                   <InfoCard icon={Mail} label="Email" value="sparklingtherapybd@gmail.com" sub="We reply within 24 hours" href="mailto:sparklingtherapybd@gmail.com" />
                   <InfoCard icon={MapPin} label="Address" value="House No: 395, New Eskaton Road" sub="Dhaka 1000, Bangladesh" />
-                  <InfoCard icon={Clock} label="Working Hours" value="Saturday – Friday" sub="9:00 AM – 6:00 PM" />
+                  <InfoCard icon={Clock} label="Working Hours" value="Saturday – Friday" sub="10:00 AM – 7:00 PM" />
                 </div>
               </motion.div>
 
@@ -177,8 +177,6 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="mt-3 group inline-flex items-center gap-1.5 text-[11px] font-bold text-primary hover:text-primary/70 transition-colors"
                 >
-                  <MapPin size={11} /> Open in Google Maps
-                  <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform duration-200" />
                 </a>
               </motion.div>
 
