@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useInView, useScroll, useTransform, animate } from 'motion/react';
 import type { Variants } from 'motion/react';
-import { Target, Heart, Users, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
+import { Target, Heart, CheckCircle2, ArrowRight, Quote } from 'lucide-react';
 import Image from 'next/image';
 
 const fadeUp: Variants = {
@@ -86,21 +86,20 @@ function StatCard({ value, label, index }: { value: string; label: string; index
 }
 
 function ValueCard({ icon: Icon, title, description }: {
-  icon: React.ElementType; title: string; description: string; index: number;
+  icon: React.ElementType; title: string; description: React.ReactNode; index: number;
 }) {
   return (
     <motion.div
       variants={fadeUp}
-      whileHover={{ y: -4 }}
       transition={{ duration: 0.25 }}
-      className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+      className="group relative bg-white border border-gray-200 rounded-2xl p-8 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 flex flex-col h-full"
     >
       <div className="absolute top-0 left-8 right-8 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-full" />
-      <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors duration-300">
+      <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center mb-6 group-hover:bg-primary/15 transition-colors duration-300 flex-shrink-0">
         <Icon size={22} className="text-primary" />
       </div>
       <h3 className="text-lg font-bold text-gray-900 mb-3">{title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+      <div className="text-gray-500 text-sm leading-relaxed flex-grow">{description}</div>
     </motion.div>
   );
 }
@@ -112,9 +111,41 @@ export default function AboutPage() {
   const heroOpacity = useTransform(heroScroll, [0, 0.6], [1, 0]);
 
   const values = [
-    { icon: Target, title: 'Our Mission', description: 'Our mission is to empower neurodiverse children by combining evidence-based therapies with joyful, meaningful experiences. We believe growth happens best when families, siblings, and community members are part of the journey. Through compassionate collaboration and purposeful play, we create inclusive environments where every child can build skills, form connections, and take confident steps toward a brighter, more connected future.' },
-    { icon: Heart, title: 'Our Vision', description: 'To be the leading child development center in Bangladesh, recognized for excellence in therapeutic care and inclusive support.' },
-    { icon: Users, title: 'Our Approach', description: 'We believe in a multidisciplinary approach, combining various therapies to address the unique needs of every child holistically.' },
+    {
+      icon: Target,
+      title: 'Our Mission',
+      description: (
+        <div className="space-y-4">
+          <p>
+            At <strong className="font-semibold text-gray-700">Sparkling Insight Therapy Point</strong>, our mission is to empower children with neurodevelopmental and behavioral challenges to reach their fullest potential through personalized, evidence-based, and multidisciplinary care.
+          </p>
+          <p>We are committed to:</p>
+          <ol className="list-decimal pl-5 space-y-2">
+            <li>Delivering individualized interventions that support communication, behavior, sensory, and developmental growth</li>
+            <li>Providing family-centered guidance and support, ensuring caregivers are active partners in every child&apos;s journey</li>
+            <li>Promoting independence, confidence, and meaningful life skills through real-world, functional learning</li>
+            <li>Using data-driven and research-based approaches to ensure effective and measurable progress</li>
+          </ol>
+          <p>
+            Through a nurturing, inclusive, and collaborative environment, we strive to build a strong community where every child feels valued, supported, and empowered to live a fulfilling and independent life.
+          </p>
+        </div>
+      ),
+    },
+    {
+      icon: Heart,
+      title: 'Our Vision',
+      description: (
+        <div className="space-y-4">
+          <p>
+            At <strong className="font-semibold text-gray-700">Sparkling Insight Therapy Point</strong>, our vision is to become a leading child development center in Bangladesh, recognized for setting the standard in innovative, compassionate, and evidence-based care. We aspire to create a future where every child, regardless of their developmental challenges, has access to high-quality, personalized support that enables them to thrive, grow, and contribute meaningfully to society.
+          </p>
+          <p>
+            We envision building inclusive communities where children and their families feel supported, connected, and empowered throughout their journey. Through continuous innovation, multidisciplinary collaboration, and a commitment to excellence, we aim to expand access to effective therapies and inspire hope, confidence, and transformation. Our goal is to foster a nurturing environment that promotes joy, development, and independence, while becoming a trusted center of excellence in child development and neurodiversity-affirming care.
+          </p>
+        </div>
+      ),
+    },
   ];
 
   const stats = [
@@ -407,7 +438,7 @@ export default function AboutPage() {
                 Our core<br />values.
               </h2>
             </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {values.map((v, i) => (
                 <ValueCard key={v.title} icon={v.icon} title={v.title} description={v.description} index={i} />
               ))}

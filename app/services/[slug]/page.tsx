@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
@@ -14,6 +15,52 @@ export async function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: ServicePageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = services.find((s) => s.slug === slug);
+
+  if (!service) {
+    return {
+      title: 'Service Not Found',
+      description: 'The requested service page could not be found.',
+    };
+  }
+
+  const cleanName = service.name.replace(/\s*\([^)]*\)\s*/g, '').trim();
+  const title = `${service.name} in Dhaka`;
+  const description = `${service.desc} Learn how ${cleanName.toLowerCase()} at Sparkling Insight Therapy Point supports children in Dhaka.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      service.name,
+      `${cleanName} in Dhaka`,
+      `${cleanName} for children`,
+      'Sparkling Insight Therapy Point',
+      'child therapy center in Dhaka',
+      ...service.focusAreas.slice(0, 4),
+    ],
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
+    openGraph: {
+      title: `${service.name} | Sparkling Insight Therapy Point`,
+      description,
+      url: `https://sparklingtherapybd.com/services/${service.slug}`,
+      type: 'website',
+      siteName: 'Sparkling Insight Therapy Point',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${service.name} | Sparkling Insight Therapy Point`,
+      description,
+    },
+  };
+}
+
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = services.find((s) => s.slug === slug);
@@ -24,10 +71,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <div className="min-h-screen bg-white">
-
       <div className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'repeating-linear-gradient(90deg,white 0,white 1px,transparent 0,transparent 50%)', backgroundSize: '80px 100%' }} />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              'repeating-linear-gradient(90deg,white 0,white 1px,transparent 0,transparent 50%)',
+            backgroundSize: '80px 100%',
+          }}
+        />
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-primary" />
         <div className="absolute -left-32 top-0 w-96 h-96 rounded-full bg-primary/10 blur-3xl pointer-events-none" />
 
@@ -60,7 +112,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 py-20">
-
         <Link
           href="/"
           className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-gray-400 hover:text-gray-900 transition-colors mb-16 group"
@@ -70,10 +121,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </Link>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 items-start">
-
           <div className="space-y-20">
-
-            {/* Overview */}
             <section>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-4 flex items-center gap-2">
                 <span className="w-4 h-px bg-primary inline-block" /> Overview
@@ -86,7 +134,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
             </section>
 
-            {/* Focus Areas */}
             <section>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-4 flex items-center gap-2">
                 <span className="w-4 h-px bg-primary inline-block" /> Focus Areas
@@ -109,7 +156,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </div>
             </section>
 
-            {/* Benefits */}
             <section>
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary mb-4 flex items-center gap-2">
                 <span className="w-4 h-px bg-primary inline-block" /> Benefits
@@ -128,12 +174,9 @@ export default async function ServicePage({ params }: ServicePageProps) {
                 ))}
               </ul>
             </section>
-
           </div>
 
-          {/* ── Sidebar ───────────────────────────────────────────────────── */}
           <aside className="space-y-5">
-
             <ServiceBookingCard />
 
             <div className="rounded-2xl border border-gray-200 overflow-hidden">
@@ -177,13 +220,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
               </Link>
             </div>
           </aside>
-
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-16 mt-8">
           <BottomCTA serviceName={service.name} />
         </div>
-
       </div>
     </div>
   );

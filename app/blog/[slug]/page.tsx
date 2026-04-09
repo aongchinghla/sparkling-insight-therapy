@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -6,9 +7,60 @@ import { articles } from '@/data/blog-data';
 import type { BlogContent } from '@/data/blog-data';
 import BlogBottomCTA from '@/components/ui/BlogBottomCTA';
 
-// ─── Static params ─────────────────────────────────────────────────────────────
 export function generateStaticParams() {
-  return articles.map(a => ({ slug: a.slug }));
+  return articles.map((a) => ({ slug: a.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = articles.find((a) => a.slug === slug);
+
+  if (!article) {
+    return {
+      title: 'Article Not Found',
+      description: 'The requested article could not be found.',
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+    keywords: [
+      article.title,
+      article.category,
+      'Sparkling Insight Therapy Point',
+      'child therapy blog',
+      'parent resources',
+      'child development articles',
+    ],
+    alternates: {
+      canonical: `/blog/${article.slug}`,
+    },
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      url: `https://sparklingtherapybd.com/blog/${article.slug}`,
+      type: 'article',
+      publishedTime: new Date(article.date).toISOString(),
+      images: [
+        {
+          url: article.thumbnail,
+          alt: article.title,
+        },
+      ],
+      siteName: 'Sparkling Insight Therapy Point',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.title,
+      description: article.excerpt,
+      images: [article.thumbnail],
+    },
+  };
 }
 
 // ─── Content renderer ──────────────────────────────────────────────────────────
@@ -67,34 +119,30 @@ function RenderBlock({ block }: { block: BlogContent }) {
   }
 }
 
-// ─── Page ──────────────────────────────────────────────────────────────────────
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const article = articles.find(a => a.slug === slug);
+  const article = articles.find((a) => a.slug === slug);
   if (!article) notFound();
 
   const related = articles
-    .filter(a => a.slug !== article.slug && a.category === article.category)
+    .filter((a) => a.slug !== article.slug && a.category === article.category)
     .slice(0, 3);
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-28 relative overflow-hidden">
-      {/* Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-16">
-
-          {/* ── Main Content ── */}
           <article>
-            {/* Back link */}
-            <a href="/blog"
-              className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gray-400 hover:text-gray-900 transition-colors duration-200 mb-10">
+            <a
+              href="/blog"
+              className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gray-400 hover:text-gray-900 transition-colors duration-200 mb-10"
+            >
               <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
               Back to Blog
             </a>
 
-            {/* Category + meta */}
             <div className="flex items-center gap-3 mb-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-lg bg-primary/10 text-primary border border-primary/15">
                 {article.category}
@@ -105,12 +153,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <span className="text-[11px] text-gray-400">{article.date}</span>
             </div>
 
-            {/* Title */}
             <h1 className="text-3xl md:text-4xl font-bold text-gray-950 leading-tight tracking-tight mb-8">
               {article.title}
             </h1>
 
-            {/* Thumbnail */}
             <div className="relative aspect-[16/7] rounded-2xl overflow-hidden mb-10">
               <div className="absolute top-0 left-0 right-0 h-[3px] bg-primary z-10" />
               <Image
@@ -123,21 +169,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               />
             </div>
 
-            {/* Content blocks */}
             <div>
               {article.content.map((block, i) => (
                 <RenderBlock key={i} block={block} />
               ))}
             </div>
 
-            {/* Bottom CTA */}
             <BlogBottomCTA />
           </article>
 
-          {/* ── Sidebar ── */}
           <aside className="self-start sticky top-28 space-y-6">
-
-            {/* About the author */}
             <div className="bg-gray-50 border border-gray-100 rounded-2xl p-6">
               <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary mb-4 flex items-center gap-2">
                 <span className="w-3 h-px bg-primary" /> Written by
@@ -156,16 +197,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </p>
             </div>
 
-            {/* Related articles */}
             {related.length > 0 && (
               <div className="bg-white border border-gray-100 rounded-2xl p-6">
                 <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary mb-5 flex items-center gap-2">
                   <Tag size={10} /> Related Articles
                 </p>
                 <div className="space-y-4">
-                  {related.map(r => (
-                    <a key={r.slug} href={`/blog/${r.slug}`}
-                      className="group flex gap-3 items-start hover:opacity-80 transition-opacity duration-200">
+                  {related.map((r) => (
+                    <a
+                      key={r.slug}
+                      href={`/blog/${r.slug}`}
+                      className="group flex gap-3 items-start hover:opacity-80 transition-opacity duration-200"
+                    >
                       <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
                         <Image src={r.thumbnail} alt={r.title} fill className="object-cover" referrerPolicy="no-referrer" />
                       </div>
@@ -181,14 +224,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             )}
 
-            {/* All articles link */}
-            <a href="/blog"
-              className="group flex items-center justify-center gap-2 w-full border border-gray-200 hover:border-primary/30 rounded-xl py-3 text-xs font-bold text-gray-500 hover:text-primary transition-all duration-200">
+            <a
+              href="/blog"
+              className="group flex items-center justify-center gap-2 w-full border border-gray-200 hover:border-primary/30 rounded-xl py-3 text-xs font-bold text-gray-500 hover:text-primary transition-all duration-200"
+            >
               <ArrowLeft size={12} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
               All Articles
             </a>
           </aside>
-
         </div>
       </div>
     </div>
