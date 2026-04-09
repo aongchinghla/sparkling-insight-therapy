@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import ScrollToTop from '@/components/ScrollToTop';
 import GlobalLayout from '@/components/GlobalLayout';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -70,6 +71,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
       <body className="font-sans antialiased" suppressHydrationWarning>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q0D94GRH8F"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-Q0D94GRH8F');
+            `,
+          }}
+        />
         <GlobalLayout>{children}</GlobalLayout>
         <ScrollToTop />
       </body>
