@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         title: 'Careers | Sparkling Insight Therapy Point',
         description:
             'Explore career opportunities at Sparkling Insight Therapy Point and join our mission to support children and families in Dhaka.',
-        url: 'https://sparklingtherapybd.com/career',
+        url: 'https://www.sparklingtherapybd.com/career',
         siteName: 'Sparkling Insight Therapy Point',
         type: 'website',
     },

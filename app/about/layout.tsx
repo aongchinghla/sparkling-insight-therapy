@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         title: 'About Us | Sparkling Insight Therapy Point',
         description:
             'Learn about Sparkling Insight Therapy Point, our mission, vision, multidisciplinary approach, and commitment to supporting children and families in Dhaka.',
-        url: 'https://sparklingtherapybd.com/about',
+        url: 'https://www.sparklingtherapybd.com/about',
         siteName: 'Sparkling Insight Therapy Point',
         type: 'website',
     },

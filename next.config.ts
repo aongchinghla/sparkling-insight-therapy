@@ -1,4 +1,4 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   async redirects() {
@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
             value: 'www.sparklingtherapybd.com',
           },
         ],
-        destination: 'https://sparklingtherapybd.com/:path*',
+        destination: 'https://www.sparklingtherapybd.com/:path*',
         permanent: true,
       },
     ];
@@ -42,7 +42,7 @@ const nextConfig: NextConfig = {
   },
   output: 'standalone',
   transpilePackages: ['motion'],
-  webpack: (config, {dev}) => {
+  webpack: (config, { dev }) => {
     // Optional: disable HMR file-watching in certain environments.
     if (dev && process.env.DISABLE_HMR === 'true') {
       config.watchOptions = {

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
                 disallow: ["/api/", "/premium-videos/checkout/", "/admin"],
             },
         ],
-        sitemap: "https://sparklingtherapybd.com/sitemap.xml",
-        host: "https://sparklingtherapybd.com",
+        sitemap: "https://www.sparklingtherapybd.com/sitemap.xml",
+        host: "https://www.sparklingtherapybd.com",
     };
 }

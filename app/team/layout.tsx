@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         title: 'Our Therapists | Sparkling Insight Therapy Point',
         description:
             'Meet the expert therapists and leadership team at Sparkling Insight Therapy Point who support children and families in Dhaka with compassionate, multidisciplinary care.',
-        url: 'https://sparklingtherapybd.com/team',
+        url: 'https://www.sparklingtherapybd.com/team',
         siteName: 'Sparkling Insight Therapy Point',
         type: 'website',
     },

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         title: 'Contact Info | Sparkling Insight Therapy Point',
         description:
             'Contact Sparkling Insight Therapy Point in Dhaka for appointments, therapy services, consultations, and child development support.',
-        url: 'https://sparklingtherapybd.com/contact',
+        url: 'https://www.sparklingtherapybd.com/contact',
         siteName: 'Sparkling Insight Therapy Point',
         type: 'website',
     },

@@ -21,15 +21,15 @@ export default function Home() {
     '@type': 'WebSite',
     name: 'Sparkling Insight Therapy Point',
     alternateName: ['Sparkling Insight', 'Sparkling Therapy BD'],
-    url: 'https://sparklingtherapybd.com/',
+    url: 'https://www.sparklingtherapybd.com/',
   };
 
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Sparkling Insight Therapy Point',
-    url: 'https://sparklingtherapybd.com',
-    logo: 'https://sparklingtherapybd.com/favicon.ico',
+    url: 'https://www.sparklingtherapybd.com',
+    logo: 'https://www.sparklingtherapybd.com/favicon.ico',
     contactPoint: [
       {
         '@type': 'ContactPoint',

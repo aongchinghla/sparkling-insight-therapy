@@ -7,7 +7,7 @@ import GlobalLayout from '@/components/GlobalLayout';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sparklingtherapybd.com'),
+  metadataBase: new URL('https://www.sparklingtherapybd.com'),
   title: {
     default: 'Sparkling Insight Therapy Point | Child Development Center in Dhaka',
     template: '%s | Sparkling Insight Therapy Point',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: 'Sparkling Insight Therapy Point | Child Development Center in Dhaka',
     description:
       'Speech therapy, occupational therapy, ABA therapy, physiotherapy, counseling, and school readiness programs for children in Dhaka.',
-    url: 'https://sparklingtherapybd.com',
+    url: 'https://www.sparklingtherapybd.com',
     siteName: 'Sparkling Insight Therapy Point',
     locale: 'en_BD',
     type: 'website',

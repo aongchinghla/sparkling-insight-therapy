@@ -49,7 +49,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${service.name} | Sparkling Insight Therapy Point`,
       description,
-      url: `https://sparklingtherapybd.com/services/${service.slug}`,
+      url: `https://www.sparklingtherapybd.com/services/${service.slug}`,
       type: 'website',
       siteName: 'Sparkling Insight Therapy Point',
     },

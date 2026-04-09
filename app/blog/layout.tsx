@@ -20,7 +20,7 @@ export const metadata: Metadata = {
         title: 'Resources for Parents | Sparkling Insight Therapy Point',
         description:
             'Explore helpful articles, therapy guides, and child development resources for parents and caregivers from Sparkling Insight Therapy Point.',
-        url: 'https://sparklingtherapybd.com/blog',
+        url: 'https://www.sparklingtherapybd.com/blog',
         siteName: 'Sparkling Insight Therapy Point',
         type: 'website',
     },

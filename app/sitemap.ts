@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { articles } from "@/data/blog-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://sparklingtherapybd.com";
+    const baseUrl = "https://www.sparklingtherapybd.com";
 
     const staticRoutes: MetadataRoute.Sitemap = [
         {

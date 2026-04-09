@@ -43,7 +43,7 @@ export async function generateMetadata({
     openGraph: {
       title: article.title,
       description: article.excerpt,
-      url: `https://sparklingtherapybd.com/blog/${article.slug}`,
+      url: `https://www.sparklingtherapybd.com/blog/${article.slug}`,
       type: 'article',
       publishedTime: new Date(article.date).toISOString(),
       images: [
