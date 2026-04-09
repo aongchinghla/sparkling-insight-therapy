@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     'autism therapy center in Dhaka',
     'developmental delay therapy in Bangladesh',
   ],
+  verification: {
+    google: 'JNM4Ji79XDOoitPGYZCaMiEhtNFmZAuYWDA5DQ0pMU8',
+  },
   alternates: {
     canonical: '/',
   },
