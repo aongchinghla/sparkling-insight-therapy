@@ -177,6 +177,7 @@ export default function ContactPage() {
                   rel="noopener noreferrer"
                   className="mt-3 group inline-flex items-center gap-1.5 text-[11px] font-bold text-primary hover:text-primary/70 transition-colors"
                 >
+                  <span className="flex items-center gap-1.5">Open in Google Maps <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" /></span>
                 </a>
               </motion.div>
 
