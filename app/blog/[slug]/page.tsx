@@ -2,10 +2,12 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import { articles } from '@/data/blog-data';
 import type { BlogContent } from '@/data/blog-data';
 import BlogBottomCTA from '@/components/ui/BlogBottomCTA';
+import { articleJsonLd, breadcrumbJsonLd } from '@/lib/site';
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -130,18 +132,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen bg-white pt-24 pb-28 relative overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd(article)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: 'Home', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: article.title, path: `/blog/${article.slug}` },
+            ]),
+          ),
+        }}
+      />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-16">
           <article>
-            <a
+            <Link
               href="/blog"
               className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gray-400 hover:text-gray-900 transition-colors duration-200 mb-10"
             >
               <ArrowLeft size={13} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
               Back to Blog
-            </a>
+            </Link>
 
             <div className="flex items-center gap-3 mb-5">
               <span className="text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1 rounded-lg bg-primary/10 text-primary border border-primary/15">
@@ -224,13 +242,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
             )}
 
-            <a
+            <Link
               href="/blog"
               className="group flex items-center justify-center gap-2 w-full border border-gray-200 hover:border-primary/30 rounded-xl py-3 text-xs font-bold text-gray-500 hover:text-primary transition-all duration-200"
             >
               <ArrowLeft size={12} className="group-hover:-translate-x-0.5 transition-transform duration-200" />
               All Articles
-            </a>
+            </Link>
           </aside>
         </div>
       </div>

@@ -8,6 +8,8 @@ import Blog from '@/components/home/Blog';
 import Testimonials from '@/components/home/Testimonials';
 import Team from '@/components/home/Team';
 import Gallery from '@/components/home/Gallery';
+import { localBusinessJsonLd, servicesItemListJsonLd, websiteJsonLd } from '@/lib/site';
+import { services } from '@/data/services';
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,40 +18,19 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Sparkling Insight Therapy Point',
-    alternateName: ['Sparkling Insight', 'Sparkling Therapy BD'],
-    url: 'https://www.sparklingtherapybd.com/',
-  };
-
-  const organizationSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'Sparkling Insight Therapy Point',
-    url: 'https://www.sparklingtherapybd.com',
-    logo: 'https://www.sparklingtherapybd.com/favicon.ico',
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
-        telephone: '+8801902028787',
-        contactType: 'customer service',
-        areaServed: 'BD',
-        availableLanguage: ['en', 'bn'],
-      },
-    ],
-  };
-
   return (
     <main className="relative">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesItemListJsonLd(services)) }}
       />
 
       <Hero />

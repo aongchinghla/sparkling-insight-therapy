@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.sparklingtherapybd.com',
+            value: 'sparklingtherapybd.com',
           },
         ],
         destination: 'https://www.sparklingtherapybd.com/:path*',
@@ -35,6 +35,12 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
         port: '',
         pathname: '/**',
       },

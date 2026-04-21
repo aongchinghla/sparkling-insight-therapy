@@ -6,6 +6,7 @@ import { CheckCircle, ArrowLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { services } from '@/data/services';
 import ServiceBookingCard from '@/components/ui/ServiceBookingCard';
 import BottomCTA from '@/components/ui/BottomCTA';
+import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/site';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -71,6 +72,22 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <div className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd(service)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbJsonLd([
+              { name: 'Home', path: '/' },
+              { name: 'Services', path: '/services' },
+              { name: service.name, path: `/services/${service.slug}` },
+            ]),
+          ),
+        }}
+      />
       <div className="relative bg-gray-950 pt-36 pb-20 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.03]"

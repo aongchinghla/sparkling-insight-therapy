@@ -49,6 +49,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {[
                 { name: 'Home', href: '/' },
+                { name: 'Services', href: '/services' },
                 { name: 'About Us', href: '/about' },
                 { name: 'Team', href: '/team' },
                 { name: 'Career', href: '/career' },
@@ -110,7 +111,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:info@sparklinginsight.com"
+                <a href="mailto:sparklingtherapybd@gmail.com"
                   className="flex items-center gap-3 text-sm text-gray-400 hover:text-white transition-colors duration-200">
                   <Mail size={15} className="text-primary flex-shrink-0" />
                   sparklingtherapybd@gmail.com

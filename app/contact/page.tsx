@@ -320,7 +320,7 @@ export default function ContactPage() {
                 className="flex items-center gap-2 bg-primary text-white text-sm font-bold px-7 py-3.5 rounded-xl hover:bg-primary-hover transition-colors duration-200">
                 <Phone size={14} /> Call Now
               </a>
-              <a href="mailto:hello@sparklinginsight.com"
+              <a href="mailto:sparklingtherapybd@gmail.com"
                 className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-bold px-7 py-3.5 rounded-xl transition-colors duration-200">
                 <Mail size={14} /> Send Email
               </a>

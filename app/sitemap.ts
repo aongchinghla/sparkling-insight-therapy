@@ -1,55 +1,58 @@
 import type { MetadataRoute } from "next";
 import { articles } from "@/data/blog-data";
+import { services } from "@/data/services";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = "https://www.sparklingtherapybd.com";
+    const baseUrl = siteUrl;
+    const lastModified = new Date("2026-04-21");
 
     const staticRoutes: MetadataRoute.Sitemap = [
         {
             url: `${baseUrl}/`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "weekly",
             priority: 1,
         },
         {
             url: `${baseUrl}/about`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "monthly",
             priority: 0.9,
         },
         {
             url: `${baseUrl}/services`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "weekly",
             priority: 0.9,
         },
         {
             url: `${baseUrl}/team`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "monthly",
             priority: 0.8,
         },
         {
             url: `${baseUrl}/blog`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "weekly",
             priority: 0.8,
         },
         {
             url: `${baseUrl}/career`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "monthly",
             priority: 0.7,
         },
         {
             url: `${baseUrl}/contact`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "monthly",
             priority: 0.8,
         },
         {
             url: `${baseUrl}/premium-videos`,
-            lastModified: new Date(),
+            lastModified,
             changeFrequency: "monthly",
             priority: 0.7,
         },
@@ -62,5 +65,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    return [...staticRoutes, ...blogRoutes];
+    const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
+        url: `${baseUrl}/services/${service.slug}`,
+        lastModified,
+        changeFrequency: "monthly",
+        priority: 0.85,
+    }));
+
+    return [...staticRoutes, ...serviceRoutes, ...blogRoutes];
 }

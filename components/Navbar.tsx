@@ -22,8 +22,9 @@ export default function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     {
-      name: 'Services', href: '#services',
+      name: 'Services', href: '/services',
       dropdown: [
+        { name: 'All Services', href: '/services' },
         { name: 'Occupational Therapy', href: '/services/occupational-therapy' },
         { name: 'Speech & Language Therapy', href: '/services/speech-therapy' },
         { name: 'ABA Therapy', href: '/services/aba-therapy' },

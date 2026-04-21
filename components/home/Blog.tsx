@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import type { Variants } from 'motion/react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Clock } from 'lucide-react';
 import { articles } from '@/data/blog-data';
 
@@ -56,11 +57,11 @@ export default function Blog() {
             <span className="text-[11px] font-medium text-white/25">
               {articles.length} articles
             </span>
-            <a href="/blog"
+            <Link href="/blog"
               className="group inline-flex items-center gap-2 bg-white/6 hover:bg-primary border border-white/10 hover:border-primary text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-all duration-200">
               View All
               <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform duration-200" />
-            </a>
+            </Link>
           </motion.div>
         </motion.div>
 

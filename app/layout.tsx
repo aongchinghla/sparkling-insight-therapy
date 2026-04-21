@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import ScrollToTop from '@/components/ScrollToTop';
 import GlobalLayout from '@/components/GlobalLayout';
+import { siteConfig } from '@/lib/site';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -15,6 +16,12 @@ export const metadata: Metadata = {
   description:
     'Sparkling Insight Therapy Point in Dhaka offers Occupational Therapy, Speech & Language Therapy, ABA Therapy, physiotherapy, counseling, and school readiness programs for children with autism and developmental delays.',
   applicationName: 'Sparkling Insight Therapy Point',
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-BD': '/',
+    },
+  },
   keywords: [
     'Sparkling Insight Therapy Point',
     'child development center in Dhaka',
@@ -38,12 +45,23 @@ export const metadata: Metadata = {
     siteName: 'Sparkling Insight Therapy Point',
     locale: 'en_BD',
     type: 'website',
+    images: [
+      {
+        url: siteConfig.logo,
+        alt: 'Sparkling Insight Therapy Point logo',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sparkling Insight Therapy Point | Child Development Center in Dhaka',
     description:
       'Speech therapy, occupational therapy, ABA therapy, physiotherapy, counseling, and school readiness programs for children in Dhaka.',
+    images: [siteConfig.logo],
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
   },
   robots: {
     index: true,

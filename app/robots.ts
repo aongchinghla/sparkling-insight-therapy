@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
     return {
@@ -6,10 +7,10 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: "*",
                 allow: "/",
-                disallow: ["/api/", "/premium-videos/checkout/", "/admin"],
+                disallow: ["/api/", "/premium-videos/checkout", "/therapy-videos/checkout", "/admin"],
             },
         ],
-        sitemap: "https://www.sparklingtherapybd.com/sitemap.xml",
-        host: "https://www.sparklingtherapybd.com",
+        sitemap: `${siteUrl}/sitemap.xml`,
+        host: siteUrl,
     };
 }

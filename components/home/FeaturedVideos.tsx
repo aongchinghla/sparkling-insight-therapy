@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import type { Variants } from 'motion/react';
 import { Play, ArrowRight, Youtube } from 'lucide-react';
+import Image from 'next/image';
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -18,8 +19,8 @@ const stagger: Variants = {
 };
 
 const videos = [
+  { id: 'guWo1GHVrKs' },
   { id: 'uLWM4idGxAo' },
-  { id: 'T3bur9FYxEg' },
   { id: 'DzZwsOlkZBg' },
 ];
 
@@ -41,11 +42,6 @@ const glowDots = [
 function getThumbnail(id: string) {
   return `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
 }
-function handleThumbnailError(e: React.SyntheticEvent<HTMLImageElement>, id: string) {
-  if (!e.currentTarget.src.includes('hqdefault')) {
-    e.currentTarget.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-  }
-}
 function getEmbedUrl(id: string) {
   return `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&vq=hd1080&hd=1`;
 }
@@ -58,6 +54,8 @@ function VideoCard({
   playing: boolean;
   onPlay: () => void;
 }) {
+  const [thumbnail, setThumbnail] = useState(getThumbnail(id));
+
   return (
     <div className="relative rounded-2xl overflow-hidden bg-black ring-1 ring-white/10 w-full h-full">
       {playing ? (
@@ -70,11 +68,13 @@ function VideoCard({
         />
       ) : (
         <>
-          <img
-            src={getThumbnail(id)}
+          <Image
+            src={thumbnail}
             alt="Therapy video thumbnail"
-            onError={(e) => handleThumbnailError(e, id)}
-            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+            fill
+            sizes={large ? '(min-width: 1024px) 60vw, 100vw' : '(min-width: 1024px) 35vw, 100vw'}
+            onError={() => setThumbnail(`https://img.youtube.com/vi/${id}/hqdefault.jpg`)}
+            className="object-cover transition-transform duration-500 hover:scale-105"
           />
           <div className="absolute inset-0 bg-black/20" />
           <button onClick={onPlay} className="absolute inset-0 flex items-center justify-center">

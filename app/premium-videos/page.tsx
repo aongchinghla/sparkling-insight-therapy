@@ -70,7 +70,7 @@ function VideoCard({ video, idx }: { video: typeof VIDEOS_DATA[0]; idx: number }
       <div className="relative aspect-video bg-gray-950 overflow-hidden">
         <VimeoPlayer
           videoUrl={video.vimeoVideoUrl}
-          checkoutUrl={`/therapy-videos/checkout?id=${video.id}`}
+          checkoutUrl={`/premium-videos/checkout?id=${video.id}`}
         />
 
         {/* Duration badge */}
@@ -111,7 +111,7 @@ function VideoCard({ video, idx }: { video: typeof VIDEOS_DATA[0]; idx: number }
             <span className="text-xs text-gray-400 ml-1">one-time</span>
           </div>
           <Link
-            href={`/therapy-videos/checkout?id=${video.id}`}
+            href={`/premium-videos/checkout?id=${video.id}`}
             className="group/btn flex items-center gap-2 bg-gray-950 hover:bg-primary text-white text-xs font-bold px-5 py-2.5 rounded-xl transition-colors duration-200"
           >
             Buy Now
@@ -258,7 +258,7 @@ export default function HomeTherapyVideos() {
                 WhatsApp Support
               </a>
               <a
-                href="mailto:hello@sparklingtherapybd.com"
+                href="mailto:sparklingtherapybd@gmail.com"
                 className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-bold px-7 py-3.5 rounded-xl transition-colors duration-200"
               >
                 Email Us

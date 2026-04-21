@@ -4,6 +4,10 @@ import React from 'react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
   title: '404 — Page Not Found | Sparkling Insight Therapy Point',
 };
 import Link from 'next/link';
