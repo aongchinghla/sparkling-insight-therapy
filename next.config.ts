@@ -1,21 +1,6 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'sparklingtherapybd.com',
-          },
-        ],
-        destination: 'https://www.sparklingtherapybd.com/:path*',
-        permanent: true,
-      },
-    ];
-  },
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
