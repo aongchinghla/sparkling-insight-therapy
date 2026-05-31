@@ -1,6 +1,6 @@
 import type { Article } from '@/data/blog-data';
 
-export const siteUrl = 'https://www.sparklingtherapybd.com';
+export const siteUrl = 'https://sparklingtherapybd.com';
 
 export const siteConfig = {
   name: 'Sparkling Insight Therapy Point',

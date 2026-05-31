@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     title: 'Home Therapy Videos | Sparkling Insight Therapy Point',
     description:
       'Practical therapy guidance videos for parents and caregivers in Bangladesh.',
-    url: 'https://www.sparklingtherapybd.com/premium-videos',
+    url: 'https://sparklingtherapybd.com/premium-videos',
     siteName: 'Sparkling Insight Therapy Point',
     type: 'website',
   },
