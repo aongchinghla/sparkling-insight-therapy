@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description:
     'Parent-friendly therapy videos from Sparkling Insight Therapy Point with practical guidance for supporting children at home in Bangladesh.',
   alternates: {
-    canonical: '/premium-videos',
+    canonical: 'https://sparklingtherapybd.com/premium-videos',
   },
   openGraph: {
     title: 'Home Therapy Videos | Sparkling Insight Therapy Point',

@@ -7,7 +7,7 @@ import { ArrowLeft, Clock, Tag } from 'lucide-react';
 import { articles } from '@/data/blog-data';
 import type { BlogContent } from '@/data/blog-data';
 import BlogBottomCTA from '@/components/ui/BlogBottomCTA';
-import { articleJsonLd, breadcrumbJsonLd } from '@/lib/site';
+import { articleJsonLd, breadcrumbJsonLd, siteUrl } from '@/lib/site';
 
 export function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -40,7 +40,7 @@ export async function generateMetadata({
       'child development articles',
     ],
     alternates: {
-      canonical: `/blog/${article.slug}`,
+      canonical: `${siteUrl}/blog/${article.slug}`,
     },
     openGraph: {
       title: article.title,

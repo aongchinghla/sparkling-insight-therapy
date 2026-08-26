@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         'child development center careers',
     ],
     alternates: {
-        canonical: '/career',
+        canonical: 'https://sparklingtherapybd.com/career',
     },
     openGraph: {
         title: 'Careers | Sparkling Insight Therapy Point',

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     'school readiness program Dhaka',
   ],
   alternates: {
-    canonical: '/services',
+    canonical: 'https://sparklingtherapybd.com/services',
   },
   openGraph: {
     title: 'Therapy Services in Dhaka | Sparkling Insight Therapy Point',

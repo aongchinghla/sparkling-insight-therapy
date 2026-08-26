@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     'Sparkling Insight Therapy Point in Dhaka offers Occupational Therapy, Speech & Language Therapy, ABA Therapy, physiotherapy, counseling, and school readiness programs for children with autism and developmental delays.',
   applicationName: 'Sparkling Insight Therapy Point',
   alternates: {
-    canonical: '/',
+    canonical: 'https://sparklingtherapybd.com',
     languages: {
-      'en-BD': '/',
+      'en-BD': 'https://sparklingtherapybd.com',
     },
   },
   keywords: [

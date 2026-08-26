@@ -7,10 +7,14 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: "*",
                 allow: "/",
-                disallow: ["/api/", "/premium-videos/checkout", "/therapy-videos/checkout", "/admin"],
+                disallow: [
+                    "/api/",
+                    "/premium-videos/checkout",
+                    "/therapy-videos/checkout",
+                    "/admin",
+                ],
             },
         ],
         sitemap: `${siteUrl}/sitemap.xml`,
-        host: siteUrl,
     };
 }

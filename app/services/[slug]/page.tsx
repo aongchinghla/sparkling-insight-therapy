@@ -6,7 +6,7 @@ import { CheckCircle, ArrowLeft, ChevronRight, ArrowRight } from 'lucide-react';
 import { services } from '@/data/services';
 import ServiceBookingCard from '@/components/ui/ServiceBookingCard';
 import BottomCTA from '@/components/ui/BottomCTA';
-import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/site';
+import { breadcrumbJsonLd, serviceJsonLd, siteUrl } from '@/lib/site';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -45,7 +45,7 @@ export async function generateMetadata({
       ...service.focusAreas.slice(0, 4),
     ],
     alternates: {
-      canonical: `/services/${service.slug}`,
+      canonical: `${siteUrl}/services/${service.slug}`,
     },
     openGraph: {
       title: `${service.name} | Sparkling Insight Therapy Point`,

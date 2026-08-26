@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         'therapy blog in Dhaka',
     ],
     alternates: {
-        canonical: '/blog',
+        canonical: 'https://sparklingtherapybd.com/blog',
     },
     openGraph: {
         title: 'Resources for Parents | Sparkling Insight Therapy Point',

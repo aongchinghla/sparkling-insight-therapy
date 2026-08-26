@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         'child development specialists in Bangladesh',
     ],
     alternates: {
-        canonical: '/team',
+        canonical: 'https://sparklingtherapybd.com/team',
     },
     openGraph: {
         title: 'Our Therapists | Sparkling Insight Therapy Point',

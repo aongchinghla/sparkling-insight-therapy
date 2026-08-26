@@ -13,7 +13,7 @@ export const metadata: Metadata = {
         'child development center Dhaka contact',
     ],
     alternates: {
-        canonical: '/contact',
+        canonical: 'https://sparklingtherapybd.com/contact',
     },
     openGraph: {
         title: 'Contact Info | Sparkling Insight Therapy Point',
