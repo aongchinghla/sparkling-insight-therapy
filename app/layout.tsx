@@ -4,6 +4,7 @@ import './globals.css';
 import ScrollToTop from '@/components/ScrollToTop';
 import GlobalLayout from '@/components/GlobalLayout';
 import { siteConfig } from '@/lib/site';
+import { Analytics } from '@vercel/analytics/next';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
@@ -82,11 +83,26 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Sparkling Insight Therapy Point',
+    alternateName: 'Sparkling Insight',
+    url: 'https://sparklingtherapybd.com',
+  };
+
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
+      </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <GlobalLayout>{children}</GlobalLayout>
         <ScrollToTop />
+        <Analytics />
       </body>
     </html>
   );
