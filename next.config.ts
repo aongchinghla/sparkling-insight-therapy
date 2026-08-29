@@ -2,6 +2,17 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  async redirects() {
+    return [
+      // Redirect www → non-www (permanent 301)
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.sparklingtherapybd.com' }],
+        destination: 'https://sparklingtherapybd.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
