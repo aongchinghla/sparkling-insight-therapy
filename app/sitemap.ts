@@ -9,7 +9,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const staticRoutes: MetadataRoute.Sitemap = [
         {
-            url: `${baseUrl}/`,
+            // Use the canonical non-www URL without trailing slash to avoid redirect chains
+            url: `${baseUrl}`,
             lastModified,
             changeFrequency: "weekly",
             priority: 1,

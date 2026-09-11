@@ -2,6 +2,9 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // NOTE: The www → non-www redirect is also handled by middleware.ts at the Edge.
+  // This config-level redirect acts as a fallback for environments where middleware
+  // may not run (e.g. certain deployment targets or custom servers).
   async redirects() {
     return [
       // Redirect www → non-www (permanent 301)
