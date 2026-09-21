@@ -27,7 +27,8 @@ export function middleware(request: NextRequest) {
   // sees the canonical URL at the HTTP response level as well.
   const response = NextResponse.next();
 
-  const canonicalUrl = `https://sparklingtherapybd.com${pathname}`;
+  const cleanPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+  const canonicalUrl = cleanPath === '/' ? 'https://sparklingtherapybd.com' : `https://sparklingtherapybd.com${cleanPath}`;
   response.headers.set('Link', `<${canonicalUrl}>; rel="canonical"`);
 
   return response;
