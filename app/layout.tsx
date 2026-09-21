@@ -83,22 +83,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const websiteSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Sparkling Insight Therapy Point',
-    alternateName: 'Sparkling Insight',
-    url: 'https://sparklingtherapybd.com',
-  };
-
   return (
     <html lang="en" className={`${inter.variable} scroll-smooth`}>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-        />
-      </head>
       <body className="font-sans antialiased" suppressHydrationWarning>
         <GlobalLayout>{children}</GlobalLayout>
         <ScrollToTop />

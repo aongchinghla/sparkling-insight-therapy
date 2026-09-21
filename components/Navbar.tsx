@@ -50,9 +50,9 @@ export default function Navbar() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between">
 
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0" aria-label="Sparkling Insight Therapy Point">
             <div className="relative w-42 h-14">
-              <Image src="/logo.png" alt="Sparkling Insight" fill className="object-contain object-left" />
+              <Image src="/logo.png" alt="Sparkling Insight Therapy Point" fill priority className="object-contain object-left" />
             </div>
           </Link>
 

@@ -4,7 +4,7 @@ export const siteUrl = 'https://sparklingtherapybd.com';
 
 export const siteConfig = {
   name: 'Sparkling Insight Therapy Point',
-  shortName: 'Sparkling Insight',
+  shortName: 'Sparkling Insight Therapy Point',
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   email: 'sparklingtherapybd@gmail.com',
@@ -38,7 +38,7 @@ export function localBusinessJsonLd() {
     '@type': ['MedicalBusiness', 'LocalBusiness'],
     '@id': `${siteUrl}/#business`,
     name: siteConfig.name,
-    alternateName: ['Sparkling Insight', 'Sparkling Therapy BD'],
+    alternateName: ['SITP', 'Sparkling Therapy BD'],
     url: siteUrl,
     logo: siteConfig.logo,
     image: siteConfig.logo,
@@ -89,7 +89,6 @@ export function websiteJsonLd() {
     '@type': 'WebSite',
     '@id': `${siteUrl}/#website`,
     name: siteConfig.name,
-    alternateName: ['Sparkling Insight', 'Sparkling Therapy BD'],
     url: siteUrl,
     publisher: { '@id': `${siteUrl}/#business` },
     inLanguage: 'en-BD',

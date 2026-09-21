@@ -83,7 +83,7 @@ export default function Hero() {
             >
               <Star className="text-primary" size={13} fill="currentColor" />
               <span className="text-[10px] font-bold text-white/70 uppercase tracking-[0.18em]">
-                Trusted by 500+ Parents in Dhaka
+                Sparkling Insight Therapy Point • Dhaka
               </span>
             </motion.div>
 

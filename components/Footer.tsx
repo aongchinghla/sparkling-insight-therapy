@@ -18,9 +18,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 mb-16">
 
           <div className="space-y-6">
-            <Link href="/">
+            <Link href="/" aria-label="Sparkling Insight Therapy Point">
               <div className="relative w-32 h-18 mb-3">
-                <Image src="/footer_logo.png" alt="Sparkling Insight" fill className="object-contain object-left" />
+                <Image src="/footer_logo.png" alt="Sparkling Insight Therapy Point" fill className="object-contain object-left" />
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
@@ -135,7 +135,7 @@ export default function Footer() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Sparkling Insight Location"
+                title="Sparkling Insight Therapy Point Location"
               />
             </a>
           </div>

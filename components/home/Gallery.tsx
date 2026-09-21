@@ -94,7 +94,7 @@ export default function Gallery() {
             >
               <Image
                 src={item.src}
-                alt={`Sparkling Insight Therapy Center gallery ${idx + 1}`}
+                alt={`Sparkling Insight Therapy Point gallery ${idx + 1}`}
                 fill
                 className="object-cover transition-transform duration-700 md:group-hover:scale-105"
                 referrerPolicy="no-referrer"
