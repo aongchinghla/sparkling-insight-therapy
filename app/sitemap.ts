@@ -5,55 +5,56 @@ import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = siteUrl;
-    const lastModified = new Date();
 
+    // Use actual last-modified dates so Google can accurately track content freshness.
+    // Update these dates whenever you make significant changes to a page.
     const staticRoutes: MetadataRoute.Sitemap = [
         {
             // Use the canonical non-www URL without trailing slash to avoid redirect chains
             url: `${baseUrl}`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "weekly",
             priority: 1,
         },
         {
             url: `${baseUrl}/about`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "monthly",
             priority: 0.9,
         },
         {
             url: `${baseUrl}/services`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "weekly",
             priority: 0.9,
         },
         {
             url: `${baseUrl}/team`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "monthly",
             priority: 0.8,
         },
         {
             url: `${baseUrl}/blog`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "weekly",
             priority: 0.8,
         },
         {
             url: `${baseUrl}/career`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "monthly",
             priority: 0.7,
         },
         {
             url: `${baseUrl}/contact`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "monthly",
             priority: 0.8,
         },
         {
             url: `${baseUrl}/premium-videos`,
-            lastModified,
+            lastModified: new Date("2026-09-21"),
             changeFrequency: "monthly",
             priority: 0.7,
         },
@@ -68,7 +69,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const serviceRoutes: MetadataRoute.Sitemap = services.map((service) => ({
         url: `${baseUrl}/services/${service.slug}`,
-        lastModified,
+        lastModified: new Date("2026-09-21"),
         changeFrequency: "monthly",
         priority: 0.85,
     }));
