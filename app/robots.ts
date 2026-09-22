@@ -7,15 +7,14 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: "*",
                 allow: "/",
+                // Block private/non-public routes from being indexed
                 disallow: [
                     "/api/",
-                    "/premium-videos/checkout",
-                    "/therapy-videos/checkout",
-                    "/admin",
+                    "/premium-videos/checkout/",
+                    "/admin/",
                 ],
             },
         ],
         sitemap: `${siteUrl}/sitemap.xml`,
-        host: siteUrl,
     };
 }
