@@ -8,12 +8,12 @@ import Blog from '@/components/home/Blog';
 import Testimonials from '@/components/home/Testimonials';
 import Team from '@/components/home/Team';
 import Gallery from '@/components/home/Gallery';
-import { localBusinessJsonLd, servicesItemListJsonLd, websiteJsonLd } from '@/lib/site';
+import { localBusinessJsonLd, servicesItemListJsonLd, siteUrl, websiteJsonLd } from '@/lib/site';
 import { services } from '@/data/services';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: '/',
+    canonical: siteUrl,
   },
 };
 

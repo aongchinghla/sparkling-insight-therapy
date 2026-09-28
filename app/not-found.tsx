@@ -5,6 +5,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: '404 — Page Not Found | Sparkling Insight Therapy Point',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 import Link from 'next/link';
 import { ArrowRight, Home, Phone } from 'lucide-react';
