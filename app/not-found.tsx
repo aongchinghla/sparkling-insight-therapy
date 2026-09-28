@@ -1,11 +1,13 @@
+// app/not-found.tsx
+
 import React from 'react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import { ArrowRight, Home, Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: '404 — Page Not Found | Sparkling Insight Therapy Point',
 };
+import Link from 'next/link';
+import { ArrowRight, Home, Phone } from 'lucide-react';
 
 export default function NotFound() {
   return (

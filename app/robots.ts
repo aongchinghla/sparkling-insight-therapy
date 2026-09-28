@@ -7,10 +7,10 @@ export default function robots(): MetadataRoute.Robots {
             {
                 userAgent: "*",
                 allow: "/",
+                // Block only private or internal routes from being indexed
                 disallow: [
                     "/api/",
                     "/admin/",
-                    "/premium-videos/checkout/",
                 ],
             },
         ],
